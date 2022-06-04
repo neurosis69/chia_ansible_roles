@@ -1,0 +1,7 @@
+---
+#CHIA_OS_USER:  "chia"
+#CHIA_BRANCH:   "latest"
+#CHIA_GIT_REPO: "https://github.com/Chia-Network/chia-blockchain.git"
+#CHIA_SW_PATH:  "/home/chia/chia-blockchain"
+#CHIA_LOGGING:  "info"
+#CHIA_SERVICE:  "node"
