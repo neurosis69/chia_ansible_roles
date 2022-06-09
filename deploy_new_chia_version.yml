@@ -1,13 +1,8 @@
 ---
-- hosts:  chia
+- hosts:  harvester1
   gather_facts: false
   remote_user: "{{ CHIA_OS_USER }}"
   vars_files:
     - vars/environment.yml
-  vars_prompt:
-    - name:                   ansible_become_pass
-      prompt:                 "Enter sudo password"
-      confirm:                yes
-      private:                yes
   roles:
     - role: setup_chia

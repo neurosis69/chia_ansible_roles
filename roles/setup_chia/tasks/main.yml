@@ -12,11 +12,13 @@
     recursive:           yes
     force:               yes
 - name:                  "Install chia-blockchain"
+  become:                true
+  become_user:           root
   ansible.builtin.shell: |
-    sh install.sh
-    . ./activate && chia init --fix-ssl-permissions && chia configure --log-level {{ CHIA_LOGGING | upper }}
-  args:
-    chdir:               "{{ CHIA_SW_PATH }}"
+    sh {{ CHIA_SW_PATH }}/install.sh
+- name:                  "Fix and configure log level"
+  ansible.builtin.shell: |
+    . {{ CHIA_SW_PATH }}/activate && chia init --fix-ssl-permissions && chia configure --log-level {{ CHIA_LOGGING | upper }}
 - name: "Start chia full node"
   ansible.builtin.shell: |
     . {{ CHIA_SW_PATH }}/activate && chia start {{ CHIA_SERVICE }}
